@@ -12,11 +12,16 @@ As we have UQ for Surrogate mdoels in various cases, here I am concerned about t
 ## Architecture Choice
 First we tested some fancy architectures to see if they hold up with the expectations. I tested Ensemble Surrogates, SNGP on multi output regression type problem where we use FEA data from a SDOF compliant mechanicsms Static Structural and Modal Analysis information. And from the results we have seen that there is minimal relation/correlation between the error prediction from member varaince in Ensemble and GP prediction from SNGP that doesn't strongly relate the error prediction with absolute error. Both of those test cases had $<0.5$ in both absolute Spearman and Pearson Correlation.
 
-Now I am testing vanilla NN on this 1200+ datapoint training data from FEA simulations to train a Vanilla NN to predict its outputs, and then we shall see the error measurements after we test it with the test set and try to see the pattern in which the error varies.
+Now for the idea that error budget/magnitude of a surrogate models each output dimension is a function of the input space. And the error margin/magnitude changes predictably with the change of the input design point with respect to the design space including all the input dimensions across all ranges of these variables. Now to test that out we first make a vanilla neural network to predict FEA simulation outputs form the parametric inputs which are geometric parameters. Then we train it to predict the output or target set. And we keep the epochs very low, intentionally so there is some amount of error in the primary neural network model so once we train the error mapper model on these data, we can see the difference and range of error the secondary model can predict with some level of precision to differentiate. And then we use the primary model to predict targets from the error_df.csv set of data. This created the training data for error mapper neural network. After training we run The primary model frezzed on the held out test set data and get predictions and compute error quantity for each output dimension. Then use run the Error Mapper model on the held out test set to predict errors per output dimention without shuffling. Then we compute Pearson and Spearman Correlation for finding the linear and rank correlation between the predicted and absolute error. And The results Are here.
 
-Then we take another unseen portion of the dataset from the same experiment and compute the error on those datapoints. Then use that map of error behaviour of that model train a new model for only error prediction. Once this error prediction model is accurate enough that we can have a correlation $>0.5$ then we can say we have a good predictor which will be tested with the held out test set obviously.
-
-So total dataset division will be training set, error map generation set, test set. I think these 3 sets will be enough. 
+| Column | Pearson Correlation | Spearman Correlation |
+|---|---|---|
+| max_stress_von_mises_error | 0.89 | 0.88 |
+| max_deformation_error | 0.53 | 0.41 |
+| mode_1_freq_error | 0.97 | 0.90 |
+| mode_2_freq_error | 0.99 | 0.92 |
+| mode_3_freq_error | 0.95 | 0.94 |
+| mode_4_freq_error | 0.97 | 0.95 |
 
 
 ## Mappings
