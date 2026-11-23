@@ -26,16 +26,26 @@ Now for the idea that error budget/magnitude of a surrogate models each output d
 
 ## Mappings
 ### Cloning
+
 ```bash
+
 git clone https://github.com/Aniruddh5502/assisted-nn-error-mapping.git
+
 cd assisted-nn-error-mapping
+
 ```
+
 ### Installing prerequisites
+
 ```bash
+
 pip install -r requirements.txt
+
 ```
+
 ### Test Commands
 1. To Run the simulation pipelines
+
 ```bash
 python -m src.main
 ```
