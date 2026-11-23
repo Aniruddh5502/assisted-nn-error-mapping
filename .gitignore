@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / lock files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Environments
+.env
+.venv
+.momo/
+env/
+venv/
+ENV/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Project Specific - Data & Artifacts (Large files/Generated content)
+models/
+**/parametric_file_files/
+_ProjectScratch/
+.parametric_file_files.backup/
+
+# Logging
+logs/
+**/logs/
+
+# Local Documentation & Scratch
+momo.md
+src/test.py
+scripts/ansys_apis.md
+
+# Notes: 
+# 'writings/' is kept in git as it contains project documentation/research.
+*.aux
+*.bbl
+*.fdb_latexmk
+*.fls 
+*.log
+*.out
+*.spl
+*.gz
+*.xdv

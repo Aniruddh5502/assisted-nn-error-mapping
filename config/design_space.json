@@ -1,0 +1,41 @@
+{
+  "project_name": "MEMS Structural Optimization",
+  "input_parameters": {
+    "beam_width": {
+      "min": 0.2,
+      "max": 2.0,
+      "unit": "mm",
+      "description": "Width of flexure beam"
+    },
+    "beam_length": {
+      "min": 10.0,
+      "max": 40.0,
+      "unit": "mm",
+      "description": "Length of the flexures"
+    },
+    "fillet_radius": {
+      "min": 0.1,
+      "max": 2,
+      "unit": "mm",
+      "description": "Radius of the flexure fillets"
+    },
+    "beam_height": {
+      "min":5.0,
+      "max":20.0,
+      "unit":"mm",
+      "description":"Height of the sample geometry"
+    }
+  },
+  "objectives": [
+    {
+      "name": "max_stress",
+      "target": "minimize",
+      "unit": "MPa"
+    },
+    {
+      "name": "first_eigenfrequency",
+      "target": "maximize",
+      "unit": "Hz"
+    }
+  ]
+}
