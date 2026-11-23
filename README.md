@@ -16,12 +16,12 @@ Now for the idea that error budget/magnitude of a surrogate models each output d
 
 | Ouput Dimension | Pearson Correlation | Spearman Correlation |
 |---|---|---|
-| max_stress_von_mises_error | 0.89 | 0.88 |
-| max_deformation_error | 0.53 | 0.41 |
-| mode_1_freq_error | 0.97 | 0.90 |
-| mode_2_freq_error | 0.99 | 0.92 |
-| mode_3_freq_error | 0.95 | 0.94 |
-| mode_4_freq_error | 0.97 | 0.95 |
+| max stress von mises error | 0.89 | 0.88 |
+| max deformation error | 0.53 | 0.41 |
+| mode 1 frequency error | 0.97 | 0.90 |
+| mode 2 frequency error | 0.99 | 0.92 |
+| mode 3 frequency error | 0.95 | 0.94 |
+| mode 4 frequency error | 0.97 | 0.95 |
 
 
 ## Mappings
