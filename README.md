@@ -57,13 +57,17 @@ root
     ├─── config/             # Configuration settings
     ├─── data/               # All the datasets and Ansys Simulation files
     ├─── plots/              # plots from experiments
+    ├─── reports/            # reports-will be filled with progress
     ├─── scaler/             # Dataset Scaling data
     ├─── scripts/            # All scripts includes Ansys, simulations etc
     ├─── src/                # Constains core coders, scripts to run the pipeline
     ├─── tests/              # Ansys, Sim, Loop, etc tests
     |       ├─── ensemble_test/
+    |       ├─── ae_arch/
+    |       ├─── assisted_nn/
     |       ├─── sn_ablation_study/
-    |       └─── aw_arch/
+    |       ├─── sngp_test/
+    |       └─── decisions.md
     ├─── writings/           # writing the papers and its drafts, nots etc
     ├─── .gitignore          # git settings
     ├─── README.md           # This file.
