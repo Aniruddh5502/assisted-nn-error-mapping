@@ -28,19 +28,14 @@ Now for the idea that error budget/magnitude of a surrogate models each output d
 ### Cloning
 
 ```bash
-
 git clone https://github.com/Aniruddh5502/assisted-nn-error-mapping.git
-
 cd assisted-nn-error-mapping
-
 ```
 
 ### Installing prerequisites
 
 ```bash
-
 pip install -r requirements.txt
-
 ```
 
 ### Test Commands
@@ -49,7 +44,15 @@ pip install -r requirements.txt
 ```bash
 python -m src.main
 ```
+This is to be used to run Ansys Simulations in the first steps to generate the dataset from whatever problem you are working upon. On which dataset we shall create seperate dataset divisions and dataloaders to train each models and generate eval results.
 
+2. Running the experiments
+
+- Running tests/assisted_nn experiment
+```bash
+cd tests
+
+```
 
 ### Files and Folders
 ```text 
