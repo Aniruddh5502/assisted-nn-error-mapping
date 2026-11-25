@@ -1,7 +1,7 @@
 
 # Assisted Neural Network Correlation Report
 
-    
+
 | Target Name | Spearman | Pearson |
 |-------------|----------|---------|
 |max_stress_von_mises_error | 0.8807507424757357 | 0.8915118084496757 | 
