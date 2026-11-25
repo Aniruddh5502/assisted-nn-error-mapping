@@ -150,7 +150,7 @@ def correlation_analysis(true_error:pd.DataFrame,
     report = """
 # Assisted Neural Network Correlation Report
 
-    
+
 | Target Name | Spearman | Pearson |
 |-------------|----------|---------|"""
 
