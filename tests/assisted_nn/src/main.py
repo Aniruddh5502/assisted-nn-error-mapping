@@ -29,6 +29,14 @@ from assisted_nn.utils.config import model_folder, data_folder, accent, success,
 primary_model_weights_path = model_folder / "primary.pt"
 error_mapper_model_weights_path = model_folder / "error_mapper.pt"
 
+# report folder
+project_root = Path(__file__).resolve().parents[3]
+report_dir   = project_root / "reports"
+
+# Make them if not present
+report_dir.mkdir(exist_ok=True, parents=True)
+
+
 def create_dataloader_from_test(test_dataset_path:Path=data_folder / "test_df.csv")->DataLoader|dict:
     # input validation
     if test_dataset_path.suffix != ".csv":
@@ -133,22 +141,40 @@ def get_predicted_error_df(test_dataloaders:DataLoader,
 
 
 def correlation_analysis(true_error:pd.DataFrame, 
-                         pred_error:pd.DataFrame)->dict:
+                         pred_error:pd.DataFrame,
+                         report_dir:Path)->dict:
     """
     This function takes two error df prediction and comp
     """
     target_columns = []
+    report = """
+# Assisted Neural Network Correlation Report
+
+    
+| Target Name | Spearman | Pearson |
+|-------------|----------|---------|"""
+
     for column in true_error.columns:
         target_columns.append(column)
         pearson_correlation = true_error[f'{(column)}'].corr(pred_error[f"{column}"], method="pearson")
         spearman_correlation= true_error[f"{column}"].corr(pred_error[f"{column}"], method="spearman")
-        console.print(f"\n[bold {accent}]Column: [/][bold]{column}[/]")
-        console.print(f"1. Pearson Correlation  : {pearson_correlation}")
-        console.print(f"2. Spearman Correlation : {spearman_correlation}")
-    pass
+        report += f"\n|{column} | {spearman_correlation} | {pearson_correlation} | "
+    
+    # printing the report into terminal
+    console.print("\n\n")
+    console.print(Markdown(report))
+    
+    # storing the report
+    try:
+        report_path = report_dir / "correlation-report.md"
+        with open(report_path, 'w', encoding='utf-8') as file:
+            file.write(report)    
+    except Exception as e:
+        console.print(f"[{accent}]ERROR: [/]{e}")
 
 if __name__=="__main__":
     from rich.console import Console
+    from rich.markdown import Markdown
     console = Console()
     
     # Test Dataloader
@@ -174,5 +200,5 @@ if __name__=="__main__":
         console.print(f"[{accent}]Test 3:[/]    [{focus}]Error Mapper model prediction failed.")
         
     # now the correlation analysis
-    correlation_result = correlation_analysis(actual_error_df, pred_error_df)
+    correlation_result = correlation_analysis(actual_error_df, pred_error_df, report_dir=report_dir)
     

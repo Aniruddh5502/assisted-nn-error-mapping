@@ -1,4 +1,4 @@
-\documentclass[preprint]{elsarticle}
+\documentclass{elsarticle}
 
 % ===== PACKAGES =====
 \usepackage{amsmath, amssymb, amsthm}
@@ -18,7 +18,7 @@
 \usepackage{pgfplots}
 % Fonts
 \usepackage{fontspec}
-\setmainfont{Anthropic Serif Web Text Regular}      % Main serif font
+
 
 % ===== JOURNAL INFO =====
 \journal{Applied Soft Computing}
@@ -44,11 +44,11 @@
 
 \begin{document}
 
-
+% Frontmatter Here
 \begin{frontmatter}
     \begin{abstract}
         % write abstract here
-        This is the abstract. Here I'll put the abstract.
+        Traditional methods to quantize errors in predictive surrogate models for regression problems uses things like Ensemble Neural Networks that have variacne of Ensemble members, for classification surrogates Spectral Neural Normal Gaussian Process etc are available. But reliably predicting error estimates are statistics dependednt. These does not take account of any intent of predictic error. They calculate them probabilistically. But if there is some relation in the models behaviour for errors in its predictions that could be known then errors predicted from them could have higher correlation to the actual error quantities. In which we can bake the intent of getting the error map correctly with respect to the inputs. If the error quantities of the surrogate models outputs are some function of the inputs. In this study we test this idea out if the error manifold of the surrogate model for this regression setup for macro scale SDOF compliant mechanism geometry that's parameterized. And testing the error with higher correlation validating if the error mapper has essentially mapped the function relating inputs and primary surrogates behaviour of inlcuding error into prediction depending on the input.
     \end{abstract}
 
     \begin{keyword}
@@ -56,6 +56,7 @@
     \end{keyword}
 
 \end{frontmatter}
+
 
 % ===== MAIN CONTENT =====
 
@@ -248,6 +249,7 @@ This paper presents a probabilistic surrogate modeling framework for MEMS accele
 
 
 % ===== CREDIT AUTHOR STATE
+
 
 \bibliographystyle{elsarticle-num-names} % Or 'elsarticle-harv' if you prefer author-year
 \bibliography{references} % Do not include the .bib extension
