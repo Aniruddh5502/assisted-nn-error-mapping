@@ -5,12 +5,11 @@ import sys
 sys.path.insert(0, ".")
 
 import subprocess
-import json
 from pathlib import Path
-from utils.data_processing import PROJECT_ROOT
+from ensemble_test.utils.data_processing import PROJECT_ROOT
 
-CHECKPOINT_DIR = PROJECT_ROOT / "tests/ensemble_test/checkpoints"
-RESULTS_DIR = PROJECT_ROOT / "tests/ensemble_test/results"
+CHECKPOINT_DIR = PROJECT_ROOT / "checkpoints"
+RESULTS_DIR = PROJECT_ROOT / "results"
 SUMMARY_PATH = RESULTS_DIR / "summary.md"
 
 
@@ -127,17 +126,21 @@ def generate_markdown(train_summary: dict, eval_summary: dict):
 
 
 def main():
+    from rich.console import Console
+    from rich.markdown import Markdown
+    console = Console()
+    
     # Run train
     success, stdout, stderr = run_script("train.py")
     if not success:
-        print("Training failed!")
+        console.print("[red]Training failed![/]")
         return
     train_summary = extract_training_summary(stdout)
 
     # Run evaluate
     success, stdout, stderr = run_script("evaluate.py")
     if not success:
-        print("Evaluation failed!")
+        print("[red]Evaluation failed![/]")
         return
     eval_summary = extract_eval_summary(stdout)
 
@@ -148,7 +151,7 @@ def main():
     print(f"\n{'='*60}")
     print("SUMMARY")
     print(f"{'='*60}")
-    print(SUMMARY_PATH.read_text())
+    console.print(Markdown(SUMMARY_PATH.read_text()))
 
 
 if __name__ == "__main__":

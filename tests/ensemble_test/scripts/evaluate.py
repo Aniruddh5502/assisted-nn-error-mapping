@@ -31,9 +31,9 @@ TARGET_COLS = [
     "mode_4_freq",
 ]
 
-CHECKPOINT_DIR = PROJECT_ROOT / "tests/ensemble_test/checkpoints"
-RESULTS_DIR = PROJECT_ROOT / "tests/ensemble_test/results"
-DATA_DIR = PROJECT_ROOT / "tests/ensemble_test/data"
+CHECKPOINT_DIR = PROJECT_ROOT / "checkpoints"
+RESULTS_DIR = PROJECT_ROOT / "results"
+DATA_DIR = PROJECT_ROOT / "data"
 
 # Colorblind-safe palette (Wong palette)
 PALETTE_CATEGORICAL = ['#4C72B0', '#DD8452', '#55A868', '#C44E52', '#8172B3', '#937860']
@@ -46,7 +46,7 @@ QUADRANT_COLORS = {
 }
 
 # Font configuration
-FONT_SERIF = 'Anthropic Serif Web Text'
+FONT_SERIF = 'Anthropic Serif Web'
 FONT_MONO = 'Anthropic Mono Variable'
 FONT_SIZE_BASE = 14
 FONT_SIZE_SMALL = 12

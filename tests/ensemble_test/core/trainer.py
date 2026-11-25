@@ -12,7 +12,7 @@ import os
 from core.model import Ensemble
 
 # Project root (where this repo is)
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
 class EnsembleTrainer:
@@ -84,7 +84,7 @@ class EnsembleTrainer:
     ) -> dict:
         """Train with early stopping on val loss."""
         if save_dir is None:
-            save_dir = PROJECT_ROOT / "tests/ensemble_test/checkpoints"
+            save_dir = PROJECT_ROOT / "checkpoints"
         save_path = Path(save_dir)
         save_path.mkdir(parents=True, exist_ok=True)
 

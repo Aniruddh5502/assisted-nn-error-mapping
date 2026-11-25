@@ -8,7 +8,8 @@ from pathlib import Path
 import json
 
 # Project root (where this repo is)
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
+PROJECT_ROOT    =   Path(__file__).resolve().parents[1] # this one indicates to ensemble_test/
+ROOT            =   Path(__file__).resolve().parents[3] # this one is the repo root
 
 INPUT_COLS = ["beam_width", "beam_length", "fillet_radius", "beam_height"]
 TARGET_COLS = [
@@ -20,8 +21,8 @@ TARGET_COLS = [
     "mode_4_freq",
 ]
 
-RAW_DATA_PATH = PROJECT_ROOT / "data/raw/inputs.csv"
-DATA_DIR = PROJECT_ROOT / "tests/ensemble_test/data"
+RAW_DATA_PATH = ROOT / "data" / "raw" / "inputs.csv"
+DATA_DIR = ROOT / "data"
 
 
 def load_and_clean(raw_path: Path) -> pd.DataFrame:
