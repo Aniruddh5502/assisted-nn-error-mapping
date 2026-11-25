@@ -80,3 +80,8 @@ tests/ensemble_test/
 *Full details in `results/summary.md`*
 
 ## How to Run
+
+To generate the report
+```bash
+python -m ensemble_test.scripts.generate-report
+```

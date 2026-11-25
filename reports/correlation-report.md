@@ -1,6 +1,6 @@
 
 # Assisted Neural Network Correlation Report
-
+This is pearson and spearman correlation between the predicted and actual errors produced by the Primary Model. And Predicted by the Error Mapper model.
 
 | Target Name | Spearman | Pearson |
 |-------------|----------|---------|

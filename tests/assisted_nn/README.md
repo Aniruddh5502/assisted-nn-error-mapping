@@ -11,4 +11,22 @@ In this experiment we first train our primary model to predict the outputs for t
 
 
 ## Usage
-To run the full pipeline, execute `cd tests && python -m assisted_nn.src.main`.
+To prepare the data, run
+```bash
+cd tests
+python -m assisted_nn.utils.data_loader
+```
+To train the Primary Model
+```bash
+python -m assisted_nn.core.train
+```
+To train the Error Mapper Model
+```bash
+python -m assisted_nn.core.trainer_errormapper
+```
+To run the experiment, execute
+```bash
+cd tests 
+python -m assisted_nn.src.main
+```
+Now check the report in root/reports/correlation-report.md

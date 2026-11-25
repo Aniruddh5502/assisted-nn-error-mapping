@@ -12,17 +12,7 @@ As we have UQ for Surrogate mdoels in various cases, here I am concerned about t
 ## Architecture Choice
 First we tested some fancy architectures to see if they hold up with the expectations. I tested Ensemble Surrogates, SNGP on multi output regression type problem where we use FEA data from a SDOF compliant mechanicsms Static Structural and Modal Analysis information. And from the results we have seen that there is minimal relation/correlation between the error prediction from member varaince in Ensemble and GP prediction from SNGP that doesn't strongly relate the error prediction with absolute error. Both of those test cases had $<0.5$ in both absolute Spearman and Pearson Correlation.
 
-Now for the idea that error budget/magnitude of a surrogate models each output dimension is a function of the input space. And the error margin/magnitude changes predictably with the change of the input design point with respect to the design space including all the input dimensions across all ranges of these variables. Now to test that out we first make a vanilla neural network to predict FEA simulation outputs form the parametric inputs which are geometric parameters. Then we train it to predict the output or target set. And we keep the epochs very low, intentionally so there is some amount of error in the primary neural network model so once we train the error mapper model on these data, we can see the difference and range of error the secondary model can predict with some level of precision to differentiate. And then we use the primary model to predict targets from the error_df.csv set of data. This created the training data for error mapper neural network. After training we run The primary model frezzed on the held out test set data and get predictions and compute error quantity for each output dimension. Then use run the Error Mapper model on the held out test set to predict errors per output dimention without shuffling. Then we compute Pearson and Spearman Correlation for finding the linear and rank correlation between the predicted and absolute error. And The results Are here.
-
-| Ouput Dimension | Pearson Correlation | Spearman Correlation |
-|---|---|---|
-| max stress von mises error | 0.89 | 0.88 |
-| max deformation error | 0.53 | 0.41 |
-| mode 1 frequency error | 0.97 | 0.90 |
-| mode 2 frequency error | 0.99 | 0.92 |
-| mode 3 frequency error | 0.95 | 0.94 |
-| mode 4 frequency error | 0.97 | 0.95 |
-
+Now for the idea that error budget/magnitude of a surrogate models each output dimension is a function of the input space. And the error margin/magnitude changes predictably with the change of the input design point with respect to the design space including all the input dimensions across all ranges of these variables. Now to test that out we first make a vanilla neural network to predict FEA simulation outputs form the parametric inputs which are geometric parameters. Then we train it to predict the output or target set. And we keep the epochs very low, intentionally so there is some amount of error in the primary neural network model so once we train the error mapper model on these data, we can see the difference and range of error the secondary model can predict with some level of precision to differentiate. And then we use the primary model to predict targets from the error_df.csv set of data. This created the training data for error mapper neural network. After training we run The primary model frezzed on the held out test set data and get predictions and compute error quantity for each output dimension. Then use run the Error Mapper model on the held out test set to predict errors per output dimention without shuffling. Then we compute Pearson and Spearman Correlation for finding the linear and rank correlation between the predicted and absolute error. 
 
 ## Mappings
 ### Cloning
@@ -77,10 +67,23 @@ root
     └─── requirements.txt    # Requirements or dependencies to run the experiments in pyhton
 ``` 
 
-## Running
+## Experiments
+### Assisted Neural Network
+This is the succesfull experiment where I got majority of the outputs with better correlation. And here are the results that I got.
 
-### Running Simulation Pipeline
+| Ouput Dimension | Pearson Correlation | Spearman Correlation |
+|---|---|---|
+| max stress von mises error | 0.89 | 0.88 |
+| max deformation error | 0.53 | 0.41 |
+| mode 1 frequency error | 0.97 | 0.90 |
+| mode 2 frequency error | 0.99 | 0.92 |
+| mode 3 frequency error | 0.95 | 0.94 |
+| mode 4 frequency error | 0.97 | 0.95 |
 
-### Model Training and Post Steps
 
-### Conclusion
+### SNGP Error Estimation
+
+### Ensemble Neural Network
+
+## Results
+## Discussion
