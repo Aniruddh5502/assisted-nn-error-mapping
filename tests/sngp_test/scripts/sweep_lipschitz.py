@@ -81,15 +81,15 @@ def print_variance_stats(tag, s):
 
 def main():
     SCRIPT_DIR = Path(__file__).parent
-    ROOT = SCRIPT_DIR.parent.parent.parent.parent
+    ROOT = Path(__file__).parents[3]
     CSV_PATH = ROOT / "data" / "raw" / "inputs.csv"
-    RESULTS_PATH = SCRIPT_DIR.parent / "sweep_results.csv"
+    RESULTS_PATH = SCRIPT_DIR.parent/ 'data' / "sweep_results.csv"
 
     # Spectral-norm coefficient per layer. Network Lipschitz bound is c^3 (3 layers, 1-Lipschitz ReLU).
     C_VALUES = [0.5, 1.0, 2.0, 3.0, 4.0, 5.0]
 
     train_loader, val_loader, test_loader = load_and_clean_data(
-        csv_path=str(CSV_PATH), batch_size=32)
+        csv_path=CSV_PATH, batch_size=32)
     train_samples = len(train_loader.dataset)
     val_samples = len(val_loader.dataset)
     test_samples = len(test_loader.dataset)

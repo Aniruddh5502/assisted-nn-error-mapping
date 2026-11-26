@@ -6,7 +6,7 @@ from pathlib import Path
 def main():
     # Path Setup
     SCRIPT_DIR = Path(__file__).parent
-    CSV_PATH = SCRIPT_DIR.parent / "sweep_results.csv"
+    CSV_PATH = SCRIPT_DIR.parent / "data" / "sweep_results.csv"
     PLOT_DIR = SCRIPT_DIR.parent / "plots"
     PLOT_DIR.mkdir(parents=True, exist_ok=True)
     
