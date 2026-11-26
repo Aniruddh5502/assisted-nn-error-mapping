@@ -4,31 +4,15 @@
 Tests whether **ensemble variance** (spread across 10 independently trained neural networks) correlates with **absolute prediction error** on parametric FEA surrogates. This evaluates if ensemble spread is a factual reliability indicator for engineering surrogate models.
 
 ## Folder Structure
+The pipeline operates using the following root-level directory structure:
 ```
-tests/ensemble_test/
-├── core/
-│   ├── model.py          # Ensemble class (10x MLP), forward pass, predict_with_uncertainty
-│   └── trainer.py        # Training loop, early stopping, checkpointing, dataloaders
-├── scripts/
-│   ├── train.py          # Train ensemble from scratch (200 epochs, patience=50)
-│   ├── evaluate.py       # Evaluate on test set; generate plots + CSVs
-│   └── run_all.py        # Run train.py -> evaluate.py sequentially
-├── utils/
-│   └── data_processing.py  # Load/clean/split CSV; scaling; inverse transform
-├── checkpoints/
-│   ├── best_ensemble.pt      # Trained weights (10 models)
-│   └── training_history.json # Per-epoch train/val loss
-├── results/
-│   ├── correlation_analysis.csv   # Spearman/Pearson per target
-│   ├── reliability_diagram_*.png  # 6 plots: variance vs abs error (4 quadrants)
-│   ├── training_curves.png        # Log-scale loss curves
-│   ├── correlation_heatmap.png    # Heatmap of correlations across 6 targets
-│   ├── error_distribution.png     # Error histograms per target
-│   ├── test_predictions.csv       # Mean pred, variance, true, abs error (original scale)
-│   ├── individual_predictions.csv # All 10 ensemble members per sample
-│   └── summary.md                 # Auto-generated experiment summary
-└── data/
-    └── (train/val/test splits created at runtime from data/raw/inputs.csv)
+├── core/                # Ensemble logic and trainer
+├── scripts/             # Execution scripts (train, evaluate, run_all)
+├── utils/               # Data processing utilities
+├── checkpoints/         # Model weights (.pt) and training history
+├── results/             # Correlation analysis, plots, and summary.md
+├── data/                # Processed train/val/test CSV files
+└── tests/ensemble_test/ # Test module organization (internal scripts/logic)
 ```
 
 ## What the Code Tests
@@ -48,9 +32,10 @@ tests/ensemble_test/
 **Data:** 1897 samples from `data/raw/inputs.csv` → 70/15/15 split.
 
 ## Where is the Report
+All outputs are saved in the **root directory**:
 - **Auto-generated summary:** `results/summary.md` (created by `run_all.py`)
 - **Correlation statistics:** `results/correlation_analysis.csv`
-- **Visual reports:** 6 reliability diagrams + training curves + heatmap + error distributions
+- **Visual reports:** 6 reliability diagrams + training curves + heatmap + error distributions (saved in `results/`)
 - **Raw predictions:** `results/test_predictions.csv`, `results/individual_predictions.csv`
 
 ## Latest Results (from most recent run)
@@ -81,7 +66,11 @@ tests/ensemble_test/
 
 ## How to Run
 
-To generate the report
+To generate the report, run the orchestration script from the project root:
 ```bash
-python -m ensemble_test.scripts.generate-report
+python scripts/run_all.py
+```
+Or to specifically generate a report from existing results:
+```bash
+python tests/ensemble_test/scripts/generate-report.py
 ```

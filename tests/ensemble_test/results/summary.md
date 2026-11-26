@@ -15,18 +15,18 @@
 
 ## Training
 - **Ensemble: 10 models, 14140 total params**
-- **Training complete. Best val loss: 0.000078**
+- **Training complete. Best val loss: 0.000086**
 
 ## Evaluation: Variance vs Absolute Error Correlation
 
 | Target | Spearman rho | Pearson r |
 |--------|------------|-----------|
-| max_stress_von_mises | 0.333610 | 0.522766 |
-| max_deformation | 0.297680 | 0.643453 |
-| mode_1_freq | 0.411296 | 0.450947 |
-| mode_2_freq | 0.252674 | 0.353766 |
-| mode_3_freq | 0.332495 | 0.396955 |
-| mode_4_freq | 0.295437 | 0.230615 |
+| max_stress_von_mises | 0.367410 | 0.343070 |
+| max_deformation | 0.019806 | 0.578012 |
+| mode_1_freq | 0.435909 | 0.552049 |
+| mode_2_freq | 0.423147 | 0.372891 |
+| mode_3_freq | 0.428031 | 0.414609 |
+| mode_4_freq | 0.464312 | 0.445830 |
 
 ## Interpretation
 - **Spearman rho (0.3-0.4)**: Moderate monotonic relationship between ensemble variance and absolute error

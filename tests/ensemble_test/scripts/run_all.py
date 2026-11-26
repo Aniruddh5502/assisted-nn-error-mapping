@@ -131,6 +131,7 @@ def main():
     console = Console()
     
     # Run train
+    console.print("[bold green]Running training script.[/]")
     success, stdout, stderr = run_script("train.py")
     if not success:
         console.print("[red]Training failed![/]")
@@ -138,10 +139,16 @@ def main():
     train_summary = extract_training_summary(stdout)
 
     # Run evaluate
+    console.print("[bold green]Running evaluate script.[/]")
     success, stdout, stderr = run_script("evaluate.py")
     if not success:
         print("[red]Evaluation failed![/]")
         return
+    
+    # run report generation
+    console.print("[bold green]Running report generation script.[/]")
+    run_script("generate-report.py")
+    
     eval_summary = extract_eval_summary(stdout)
 
     # Generate markdown
