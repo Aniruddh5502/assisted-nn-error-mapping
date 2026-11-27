@@ -67,7 +67,7 @@ root
     └─── requirements.txt    # Requirements or dependencies to run the experiments in pyhton
 ``` 
 
-## Experiments
+## Experiments & Results
 ### Assisted Neural Network
 This is the succesfull experiment where I got majority of the outputs with better correlation. And here are the results that I got.
 
@@ -84,6 +84,17 @@ This is the succesfull experiment where I got majority of the outputs with bette
 ### SNGP Error Estimation
 
 ### Ensemble Neural Network
+These are the correlation results from Ensemble Neural Network architecture that was experimented. From here we can see that the max bound of correlation in any case is max ~0.57 no where near to the results of the Assisted Neural Netowrk architecture.
 
-## Results
+| Target Name | Spearman | Pearson |
+|-------------|----------|---------|
+|max_stress_von_mises|0.367409996935029|0.34307018|
+|max_deformation|0.0198063810387302|0.57801247|
+|mode_1_freq|0.4359094051006759|0.5520494|
+|mode_2_freq|0.4231468146744142|0.37289083|
+|mode_3_freq|0.4280307625622131|0.41460913|
+|mode_4_freq|0.4643123243893461|0.44583002|
+
+
 ## Discussion
+From the results noted above, we can see the correlation study of the predictions with actual absolute error. But as we test the other methods available in the industry, we clearly see that the assisted neural network architecture build on the hypothesis of input space depending error behaviour. As that becomes more predictable with respect to the input space, this beacomes easier for a neural network to learn that and give a proper correlation that actually tracks the actual absolute error magnitues.
