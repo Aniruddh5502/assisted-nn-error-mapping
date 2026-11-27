@@ -16,7 +16,8 @@ SCRIPT_DIR = Path(__file__).parent
 # .parent (tests)
 # .parent (new_sota)
 # .parent (root)
-ROOT = SCRIPT_DIR.parent.parent.parent
+
+ROOT = Path(__file__).parents[3]
 
 # Absolute paths for consistency
 DEFAULT_MODEL_PATH = SCRIPT_DIR.parent / "model" / "sngp_best.pth"
@@ -77,6 +78,7 @@ def evaluate_output(idx, targets, means, vars):
     }
 
 def main():
+    # we shall also generate a report from these
     # 1. Load Model
     try:
         model, device = load_model(str(DEFAULT_MODEL_PATH))
