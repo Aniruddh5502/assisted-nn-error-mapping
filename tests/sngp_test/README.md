@@ -1,6 +1,6 @@
 ---
-topic: Noting details about the SNGP text
-description: In this file we shall not the eval scripts their functions and how to run them along with all other details of this test.
+Title: Noting details about the SNGP text
+Description: In this subfolder we shall note the eval scripts their functions and how to run them along with all other details of this test.
 ---
 
 # Introduction
@@ -15,7 +15,8 @@ scripts/
     |── train.py                 # Trains the SNGP model
     |── evaluate.py              # Evaluates the model
     |── sweep_lipschitz.py       # Compute correlation and other parameters changes with different lipschitz values with a range.
-    └── visualize_sweep.py       # Plots the results in plots/ folder
+    |── visualize_sweep.py       # Plots the results in plots/ folder
+    └── generate_report.py       # Generates a markdown report from sweep data
 utils/
     |── data_cleaning.py         # Dataset cleaning and dataset making
     └── clear.py                 # Clears the __pycache__/ folders
@@ -28,7 +29,8 @@ cd comp_design_fw/tests
 python -m sngp_test.scripts.train               # to train the model
 python -m sngp_test.scripts.evaluate            # to evaluate the model
 python -m sngp_test.scripts.sweep_lipschitz     # compute the lipschitz data
-python -m sngp_test.scripts.visualize_sqweep    # plots the data generated from sqweep
+python -m sngp_test.scripts.visualize_sweep    # plots the data generated from sweep_lipschitz
+python -m sngp_test.scripts.generate_report     # generates a detailed MD report
 ```
 
 # Evaluation Result
