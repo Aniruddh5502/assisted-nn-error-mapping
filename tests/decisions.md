@@ -1,5 +1,7 @@
 # Test Decisions Log
 
+First ones are to stablish the baseline for comparison to the new method proposed in predicting the absolute error in surrogate models predictions of target values. Comparing the Spearman and Pearson Correlation rates for indivisual output targets in different methods, and testing if the new proposed method can produce higher correlation between predicted error and actual absolute error with linear and rank correlations both.
+
 ## 1. SN Ablation Study
 **Date:** (prior)  
 **Location:** `tests/sn_ablation_study/`
@@ -22,7 +24,7 @@ SN imposes a "Reliability Tax" on accuracy. Decoupled mean prediction from relia
 **Date:** (prior)  
 **Location:** `tests/sngp_test/`
 
-### Hypothesis
+### Check
 Can SNGP predict variance for FEA data and correlate this variance with absolute error with high correlation?
 
 ### Result
